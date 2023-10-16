@@ -1,0 +1,17 @@
+package com.example.assignment.Repository;
+
+import com.example.assignment.Model.ChiTietSanPham;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.stereotype.Repository;
+
+import java.util.List;
+import java.util.UUID;
+
+@Repository
+public interface CTSanPhamRepository extends JpaRepository<ChiTietSanPham, UUID> {
+    @Query(value = "select * from chi_tiet_sp", nativeQuery = true)
+    List<ChiTietSanPham> getAll();
+
+    ChiTietSanPham findChiTietSanPhamById(UUID id);
+}
